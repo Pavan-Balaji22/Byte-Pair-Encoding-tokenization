@@ -27,7 +27,7 @@ class BPETokenizer:
         for x in range(self.nmerges):
             bp_counts = self._get_counts(self.bytesData)
             req_key = max(bp_counts.items(),key=lambda x:x[1])[0]
-            self.merges_dict[req_key] = self.nextByte
+            self.merges_dict[req_key] = self.nextByte + x
             self.bytesData = self._do_merges(req_key,self.nextByte+x,self.bytesData)
         
         self.decode_dict = {v:k for k,v in self.merges_dict.items()}
